@@ -140,7 +140,7 @@ sub check_host {
         next unless $succ_ask;
     }    
     
-    unless ($self->live_ip) {
+    unless (@{$self->live_ip}) {
         $self->error('Not found live ip for: '.$host);
     }
     
@@ -164,8 +164,13 @@ Return list avaliable ip for host, sorted by "preference" mx-records
 
 =cut
 sub live_ip {
-    my @ret = shift->_mx_ask;
-    return wantarray ? @ret : [@ret]; 
+    my $self = shift;
+    if ($self->{live_ip}) {
+        return wantarray ? @{$self->{live_ip}} : $self->{live_ip}
+    } else {
+        $self->{live_ip} = [$self->_mx_ask]; 
+        return $self->live_ip; 
+    };
 }
 
 =head2 not_ping()
@@ -232,7 +237,7 @@ sub _mx_ip {
     };
 }
 
-# пингуем
+# добавляем стутус пинга
 sub _mx_ping {
     my $self = shift;
     my $mx_name = shift;
