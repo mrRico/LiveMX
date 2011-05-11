@@ -8,5 +8,5 @@ WriteMakefile(
         'Net::DNS'        => 0,
         'Net::Ping'       => 2.24
     },
-    ($] >= 5.005 ? (ABSTRACT_FROM  => 'lib/CCCP/LiveMX.pm', AUTHOR => 'mr.Rico') : ()),
+    ($] >= 5.005 ? (AUTHOR => 'mr.Rico') : ()),
 );
