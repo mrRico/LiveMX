@@ -54,6 +54,8 @@ Return error-string or undef otherwise
 
 =head1 DEPENDS ON
 
+=over 4
+
 =item *
 
 L<Mail::CheckUser> (used only package variables)

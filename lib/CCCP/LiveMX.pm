@@ -258,6 +258,8 @@ sub _mx_ask {
 
 =head1 DEPENDS ON
 
+=over 4
+
 =item *
 
 L<Mail::CheckUser> (used only package variables)
